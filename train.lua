@@ -2,11 +2,11 @@ require 'torch'
 require 'xlua'
 require 'optim'
 require 'cunn'
-require 'models/B_5C_3fc'  -- 1 + 4 = 5, remember to modify saveModel.
+require 'models/t4/1C_4CRcl_3fc'  -- 1 + 4 = 5, remember to modify saveModel.
 require 'loss'
 require 'generateInput'
 
-savedModel = 'B_5C_3fc'  -- Model to save
+savedModel = 't4/1C_4CRcl_3fc'  -- Model to save
 batchsize = 15 -- 1 = pure stochastic
 learningRate = 1e-3 
 weightDecay = 0 -- SGD only

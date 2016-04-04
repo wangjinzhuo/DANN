@@ -21,7 +21,7 @@ function test()
         classes[i] = string.format("%d",i)
     end
     confusion = optim.ConfusionMatrix(classes)
-    
+
     local correctClip = 0
     local correctVideo = 0
     local totalClip = 0
@@ -29,10 +29,8 @@ function test()
     for vid = 1, numVideo do
         local td = sys.clock()
         -- get test data
-	local input = getTestClip()
+	    local input = getTestClip()
         local target = getTestLabel()
-        --local input = torch.Tensor(15, 3, 60, 58, 58)
-        --local target = 1
         local num_clips = #input
         
         local scores = torch.zeros(101)
