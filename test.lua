@@ -4,12 +4,13 @@ require 'optim'
 require 'cunn'
 require 'nn'
 require 'image'
+require 'generateInput'
 require 'models/RCLayer'
 require 'models/RCLMaxPooling'
 
 function test()
-	local time = sys.clock()
-    local model = torch.load('./trained_models/3C_2CRcl_3fc_300.t7')  -- specify the model to test
+    local time = sys.clock()
+    local model = torch.load('./trained_models/B_5C_3fc_10000.t7')  -- specify the model to test
     print(model)
     print('Model loaded done ..')
     model:cuda()
@@ -28,10 +29,8 @@ function test()
     for vid = 1, numVideo do
         local td = sys.clock()
         -- get test data
-		local input = getTestData()
+	    local input = getTestClip()
         local target = getTestLabel()
-        --local input = torch.Tensor(15, 3, 60, 58, 58)
-        --local target = 1
         local num_clips = #input
         
         local scores = torch.zeros(101)
@@ -86,5 +85,5 @@ function test()
 	-- next iteration
 	confusion:zero()
 end
-
+init()
 test()
